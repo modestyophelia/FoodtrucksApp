@@ -14,7 +14,7 @@ struct RatingsComponent: View {
     var body: some View {
         HStack {
             ForEach(1...rating, id: \.self) { number in
-                Image(systemName: "star.fill")
+                Image(systemName: "star.fill").foregroundColor(.yellow)
             }
         }
     }
