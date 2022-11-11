@@ -8,14 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @EnvironmentObject var dbConnection: DatabaseConnection
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+
+        if dbConnection.userLoggedIn {
+            NavigationStack {
+                FoodtruckListView()
+            }
+            
+        } else {
+            NavigationStack {
+                LoginView()
+            }
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView().environmentObject(DatabaseConnection())
     }
 }
